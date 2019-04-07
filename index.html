@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IP Input</title>
+</head>
+<body>
+	
+	<div id="wrap">
+		<div>
+			<button @click="server.readonly=false">edit</button>
+			<button @click="server.readonly=true">save</button>
+			<button @click="sendData">Send</button>
+		</div>
+		<ip-input @updateaddr="updateData" ref="serverIp" :mname="info.name" :ipaddr="info.ipaddr" :serveridx="index" :readonly="server.readonly" v-for="(info,index) in server.info" :key="index"></ip-input>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>
