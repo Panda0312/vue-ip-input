@@ -116,7 +116,7 @@ var vm = new Vue({
 		},
 		save:function(){
 			if(!this.server.readonly){
-				//通过splice更新数据
+				this.server.readonly=true;
 			}
 		}
 	}
