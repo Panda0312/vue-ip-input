@@ -49,21 +49,33 @@ var ipInput ={
 			var _self = this;
 			var val = ev.target.value;
 			var e = ev || window.event;
-			if(e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 32) {
-				//right arrow,space,enter
+			_keyCode = e.keyCode;
+			if(_keyCode == 229){
+				//中文输入法下数字键keyCode异常
+				if(e.code=='Period'){
+					_keyCode=190;
+				}else if(e.code=='NumpadDecimal'){
+					_keyCode=46;
+				}else if(/\d+$/.test(e.code)){
+					_keyCode = parseInt(e.code.replace(/^\D+/,''))+48;
+				}
+			}
+			if(_keyCode == 39 || _keyCode == 13 || _keyCode == 32 ||
+			   _keyCode == 46 || _keyCode == 190) {
+				//right arrow,space,enter,decimal,period
 				if(index<3){
 					_self.$refs.singleInput[index+1].focus();
 				}
-			}else if(e.keyCode == 37){
+			}else if(_keyCode == 37){
 				//left arrow
 				if(index>0){
 					_self.$refs.singleInput[index-1].focus();
 				}
-			}else if(index<3 && e.keyCode<105 && e.keyCode>48){
+			}else if(index<3 && _keyCode<=105 && _keyCode>=48){
 				//输入完成判断,输入3个合法ip数字,第三位超过255自动保留前面输入两位跳转下一个框
 				if(val.length===3 || parseInt(val)>25 || 
-				   (parseInt(val)===25 && e.keyCode>53 && e.keyCode<=57) ||
-				   (parseInt(val)===25 && e.keyCode>101 && e.keyCode<=105)){
+				   (parseInt(val)===25 && _keyCode>53 && _keyCode<=57) ||
+				   (parseInt(val)===25 && _keyCode>101 && _keyCode<=105)){
 					_self.$refs.singleInput[index+1].focus();
 				}
 			}
