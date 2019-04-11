@@ -8,3 +8,6 @@ Vue写的IP输入框组件，提供ip输入
 5. focus自动select
 6. blur时未设置值，自动填充默认255.
 7. 修复中文输入法下键盘码识别问题
+
+# 使用
+请看main.js中 ipInput配置
