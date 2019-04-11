@@ -106,10 +106,18 @@ var vm = new Vue({
 	},
 	methods:{
 		updateData:function(addr,idx){
-			console.log(idx);
+			//更新数据到父组件
+			_data.servers.info.splice(idx,1,addr);
 		},
-		sendData:function(){
-			console.log(this.$refs);
+		edit:function(){
+			if(this.server.readonly){
+				this.server.readonly=false;
+			}
+		},
+		save:function(){
+			if(!this.server.readonly){
+				//通过splice更新数据
+			}
 		}
 	}
 });
