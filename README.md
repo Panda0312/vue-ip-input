@@ -12,6 +12,7 @@ Vue写的IP输入框组件，提供ip输入
 6. blur时未设置值，自动填充默认255.
 7. 修复中文输入法下键盘码识别问题
 
+# Description
 1. input value limit to 0-255
 2. support mutiple ip input synchronising data with parent
 3. key press checking, the key 'tab','right arrow','enter' will trigger focus event of next input while 'left arrow','backspace' when input value is empty will trigger focus event of previous input
